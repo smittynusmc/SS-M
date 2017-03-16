@@ -10,6 +10,7 @@
 using namespace std;
 
 // Customer class
+// Testing github
 class Customer
 {
 	private:
