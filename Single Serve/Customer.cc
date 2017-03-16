@@ -13,14 +13,16 @@ using namespace std;
 // Testing github
 class Customer
 {
-	private:
+private:
 	double entryTime; // x < rand(t) < y
 	double serviceTime;
 	double processTime;
 	int p;
 	double exitTime;
+	double minServiceTime = 20;
+	double maxServiceTime = 60;
 
-	public:
+public:
 	Customer(void);
 	Customer(double et);
 	void getInfo(void);
@@ -39,16 +41,25 @@ Customer::Customer(void)
 {
 	double temp;
 	//srand(time(NULL));
-	temp = (double)(rand())/RAND_MAX;
+	temp = (double)(rand()) / RAND_MAX;
 	entryTime = .5 + temp * 4; // 0.5 <= et < 4.5
 
-	temp = (double)(rand())/RAND_MAX;
+	temp = (double)(rand()) / RAND_MAX;
 	serviceTime = 12 + temp * 78; //12 <= st < 90
 
-	temp = (double)(rand())/RAND_MAX;
+	if (serviceTime < minServiceTime)
+	{
+		serviceTime = minServiceTime;		//apply min service time
+	}
+	else if (serviceTime > maxServiceTime)
+	{
+		serviceTime = maxServiceTime;		//apply max service time
+	}
+
+	temp = (double)(rand()) / RAND_MAX;
 	processTime = .1 + temp * 9.9; //.1 <= pt < 10
 
-	temp = (double)(rand())/RAND_MAX;
+	temp = (double)(rand()) / RAND_MAX;
 	exitTime = 1 + temp * 4; //1 <= ext < 5
 
 	p = rand() % 5;
@@ -57,7 +68,7 @@ Customer::Customer(void)
 Customer::Customer(double et)
 {
 	//srand(time(NULL));
-	double temp = (double)(rand())/RAND_MAX;
+	double temp = (double)(rand()) / RAND_MAX;
 	entryTime = .5 + temp * 4; // 0.5 <= et < 4.5
 }
 
@@ -122,17 +133,16 @@ int main()
 
 	deque<Customer> dmm1;
 
-	for(int i = 0; i < ASIZE; i++)
+	for (int i = 0; i < ASIZE; i++)
 	{
 		Customer temp;
 		cust[i] = temp;
-		dmm1.push(temp);
 	}
 
 	//c1.getInfo();
 	//c2.getInfo();
 	//c3.getInfo();
-    //c4.getInfo();
+	//c4.getInfo();
 
 	//c1.name = "SSM Spring 2014";
 	queue<Customer> mm1;
@@ -156,7 +166,7 @@ int main()
 	//04-04-14
 	cout << "\n\nGoing through the array for the estimators: " << endl;
 
-	for(int i = 0; i < ASIZE; i++)
+	for (int i = 0; i < ASIZE; i++)
 	{
 		cust[i].getInfo();
 		cout << endl;
@@ -166,7 +176,7 @@ int main()
 	// estimator of the average delay
 	// in the queue
 	double temp = 0;
-	for(int i = 0; i < ASIZE; i++)
+	for (int i = 0; i < ASIZE; i++)
 	{
 		temp += cust[i].getProcessTime()
 			+ cust[i].getServiceTime();
@@ -179,7 +189,7 @@ int main()
 	// for each of it's weighted
 	// delay lengths
 	temp = 0;
-	for(int i = 0; i < ASIZE; i++)
+	for (int i = 0; i < ASIZE; i++)
 	{
 		temp += cust[i].getProcessTime()
 			* cust[i].getP();
@@ -190,7 +200,7 @@ int main()
 
 	// Find T(n) for the entire run
 	Tn = 0;
-	for(int i = 0; i < ASIZE; i++)
+	for (int i = 0; i < ASIZE; i++)
 	{
 		Tn += (cust[i].getExitTime()
 			+ cust[i].getProcessTime()
@@ -204,14 +214,14 @@ int main()
 
 	integralB = 0;
 	temp = 0;
-	for(int i = 1; i < ASIZE; i++)
+	for (int i = 1; i < ASIZE; i++)
 	{
-		integralB += cust[i-1].getExitTime();
+		integralB += cust[i - 1].getExitTime();
 	}
 	cout << "\n\nIntegral B = " << integralB << endl;
 
 	// and finally, q_hat
-	u_hat = (Tn - integralB)/Tn;
+	u_hat = (Tn - integralB) / Tn;
 	cout << "\n\nu<hat> = " << u_hat << endl;
 
 	cin.get();
