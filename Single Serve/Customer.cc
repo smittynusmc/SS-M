@@ -28,6 +28,7 @@ public:
 	void getInfo(void);
 	double getProcessTime();
 	double getServiceTime();
+	void addServiceTime(double additionalTime);
 	double getEntryTime();
 	double getExitTime();
 
@@ -95,6 +96,11 @@ double Customer::getServiceTime()
 	return serviceTime;
 }
 
+void Customer::addServiceTime(double additionalTime)
+{
+	serviceTime += additionalTime;
+}
+
 double Customer::getEntryTime()
 {
 	return entryTime;
@@ -119,6 +125,7 @@ int main()
 	double u_hat = 0;
 	double integralB = 0;
 	double Tn = 0;
+	const int numExceedingCustomers = 3;
 
 	const int ASIZE = 10;
 	cout << "Welcome to the Single Customer MM1 Service Program Emulator\n" << endl;
@@ -137,6 +144,30 @@ int main()
 	{
 		Customer temp;
 		cust[i] = temp;
+	}
+
+	//increase the service time of three random customers
+	int randomIndexes[numExceedingCustomers];
+
+	for (int i = 0; i < numExceedingCustomers; i++)		//for each random customer
+	{
+		randomIndexes[i] = rand() % ASIZE; //randum number from 0 to size of customers in array
+
+		for (int j = 0; j < i; j++)	//check if customer index hasnt been picked
+		{			
+			if (randomIndexes[i] == randomIndexes[j])
+			{
+				i--;		//re choose an index
+				break;
+			}
+		}
+	}
+
+	//add additional service time
+	for (int i = 0; i < numExceedingCustomers; i++)
+	{
+		double additionalTime = rand();	//TODO some huge number of additional time
+		cust[randomIndexes[i]].addServiceTime(additionalTime);
 	}
 
 	//c1.getInfo();
