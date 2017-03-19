@@ -4,6 +4,7 @@
 #include <time.h>
 #include <queue>
 #include <deque>
+#include <math.h>
 //#include "Customer.h"
 //#include "Customer.cpp"
 
@@ -125,7 +126,6 @@ int main()
 	double u_hat = 0;
 	double integralB = 0;
 	double Tn = 0;
-	const int numExceedingCustomers = 3;
 
 	const int ASIZE = 10;
 	cout << "Welcome to the Single Customer MM1 Service Program Emulator\n" << endl;
@@ -147,8 +147,9 @@ int main()
 	}
 
 	//increase the service time of three random customers
+	int numExceedingCustomers = rint(rand()%3);
 	int randomIndexes[numExceedingCustomers];
-
+	printf("Number of exceesing customers: %d\n", numExceedingCustomers);
 	for (int i = 0; i < numExceedingCustomers; i++)		//for each random customer
 	{
 		randomIndexes[i] = rand() % ASIZE; //randum number from 0 to size of customers in array
@@ -199,6 +200,7 @@ int main()
 
 	for (int i = 0; i < ASIZE; i++)
 	{
+		printf("Customer # %d\n", (i+1));
 		cust[i].getInfo();
 		cout << endl;
 	}
