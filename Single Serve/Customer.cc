@@ -147,9 +147,10 @@ int main()
 	}
 
 	//increase the service time of three random customers
+	//numExceedingCustomers gets random number between 0 and 3
 	int numExceedingCustomers = rint(rand()%3);
 	int randomIndexes[numExceedingCustomers];
-	printf("Number of exceesing customers: %d\n", numExceedingCustomers);
+	printf("Number of exceeding customers: %d\n", numExceedingCustomers);
 	for (int i = 0; i < numExceedingCustomers; i++)		//for each random customer
 	{
 		randomIndexes[i] = rand() % ASIZE; //randum number from 0 to size of customers in array
@@ -167,7 +168,7 @@ int main()
 	//add additional service time
 	for (int i = 0; i < numExceedingCustomers; i++)
 	{
-		double additionalTime = rand();	//TODO some huge number of additional time
+		double additionalTime = (rand()/RAND_MAX)+ 90 * 12;	//TODO some huge number of additional time
 		cust[randomIndexes[i]].addServiceTime(additionalTime);
 	}
 
