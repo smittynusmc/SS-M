@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=MinGW-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW-Windows
-CND_ARTIFACT_NAME_Debug=ss-m
-CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/ss-m
+CND_ARTIFACT_NAME_Debug=final_project_sim
+CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/final_project_sim
 CND_PACKAGE_DIR_Debug=dist/Debug/MinGW-Windows/package
-CND_PACKAGE_NAME_Debug=ss-m.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/ss-m.tar
+CND_PACKAGE_NAME_Debug=finalprojectsim.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/finalprojectsim.tar
 # Release configuration
 CND_PLATFORM_Release=MinGW-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/MinGW-Windows
-CND_ARTIFACT_NAME_Release=ss-m
-CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/ss-m
+CND_ARTIFACT_NAME_Release=final_project_sim
+CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/final_project_sim
 CND_PACKAGE_DIR_Release=dist/Release/MinGW-Windows/package
-CND_PACKAGE_NAME_Release=ss-m.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/ss-m.tar
+CND_PACKAGE_NAME_Release=finalprojectsim.tar
+CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/finalprojectsim.tar
 #
 # include compiler specific variables
 #
