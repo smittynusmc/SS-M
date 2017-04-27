@@ -16,10 +16,10 @@
 
 using namespace std;
 
-int main(int argc, char** argv) {
+int main() {
     
     // Checking commits
-    cout << "Hello";
+    cout << "Hello\n";
     return 0;
 }
 

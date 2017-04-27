@@ -142,7 +142,7 @@ int run()
 
 	//increase the service time of three random customers
 	//numExceedingCustomers gets random number between 0 and 3
-	int numExceedingCustomers = rint(rand()%3);
+	const int numExceedingCustomers = 3;  // rint(rand() % 3);
 	int randomIndexes[numExceedingCustomers];
 	printf("Number of exceeding customers: %d\n", numExceedingCustomers);
 	for (int i = 0; i < numExceedingCustomers; i++)		//for each random customer
