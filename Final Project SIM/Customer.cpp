@@ -27,6 +27,7 @@ private:
 public:
 	Customer(void);
 	Customer(double et);
+        int run();
 	void getInfo(void);
 	double getProcessTime();
 	double getServiceTime();
@@ -122,7 +123,74 @@ int run()
 	double Tn = 0;
 
 	const int ASIZE = 10;
-	
+	cout << "Welcome to the Single Customer MM1 Service Program Emulator\n" << endl;
+	//srand(time(NULL));
+	Customer c1;
+	Customer c2;
+	Customer c3;
+	Customer c4;
+
+	Customer cust[ASIZE];
+
+
+	deque<Customer> dmm1;
+
+	for (int i = 0; i < ASIZE; i++)
+	{
+		Customer temp;
+		cust[i] = temp;
+	}
+
+	//increase the service time of three random customers
+	//numExceedingCustomers gets random number between 0 and 3
+	const int numExceedingCustomers = 3;  // rint(rand() % 3);
+	int randomIndexes[numExceedingCustomers];
+	printf("Number of exceeding customers: %d\n", numExceedingCustomers);
+	for (int i = 0; i < numExceedingCustomers; i++)		//for each random customer
+	{
+		randomIndexes[i] = rand() % ASIZE; //random number from 0 to size of customers in array
+
+		for (int j = 0; j < i; j++)	//check if customer index hasnt been picked
+		{			
+			if (randomIndexes[i] == randomIndexes[j])
+			{
+				i--;		//re choose an index
+				break;
+			}
+		}
+	}
+
+	//add additional service time
+	for (int i = 0; i < numExceedingCustomers; i++)
+	{
+		double additionalTime = ((rand()/RAND_MAX) + 90) * 2;	//TODO some huge number of additional time
+		cust[randomIndexes[i]].addServiceTime(additionalTime);
+	}
+
+	//c1.getInfo();
+	//c2.getInfo();
+	//c3.getInfo();
+	//c4.getInfo();
+
+	//c1.name = "SSM Spring 2014";
+	queue<Customer> mm1;
+
+	mm1.push(c1);
+	mm1.push(c2);
+
+	// you cannot alter the data AFTER it enters the queue.
+
+
+	c3 = mm1.front();
+	mm1.pop();
+
+	c3.getInfo();
+	//cout << c3.d1 << endl;
+	//cout << c3.d2 << endl;
+
+
+	cout << "The size of dmm1 is: " << dmm1.size() << endl;
+
 	//04-04-14
 	cout << "\n\nGoing through the array for the estimators: " << endl;
 
